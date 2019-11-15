@@ -17,8 +17,10 @@ public class Illness {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
     private int id;
-    @Column(name = "Name", nullable = false, length = 100)
+
+    @Column(name = "Name", unique = true, nullable = false, length = 100)
     private String name;
+
     @ManyToMany(mappedBy = "illnesses")
     private List<Breed> breeds = new ArrayList<>();
 }

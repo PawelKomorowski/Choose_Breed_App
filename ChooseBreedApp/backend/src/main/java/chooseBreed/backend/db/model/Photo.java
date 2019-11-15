@@ -16,7 +16,7 @@ public class Photo {
     @Column(name = "Id")
     private int id;
 
-    @Column(name = "file", nullable = false, length = 255)
+    @Column(name = "file", unique = true, nullable = false, length = 255)
     private String file;
 
     @ManyToOne()

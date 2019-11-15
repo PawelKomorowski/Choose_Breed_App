@@ -1,6 +1,7 @@
 package chooseBreed.backend.db.model;
 
 import chooseBreed.backend.db.model.enums.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -63,9 +64,9 @@ public class Breed {
     private BreedGroup breedGroup;
 
     @OneToMany(mappedBy = "breed")
-    private List<Photo> photos = new ArrayList<>();;
+    private List<Photo> photos = new ArrayList<>();
 
     @ManyToMany
-    private List<Illness> illnesses = new ArrayList<>();;
+    private List<Illness> illnesses = new ArrayList<>();
 
 }

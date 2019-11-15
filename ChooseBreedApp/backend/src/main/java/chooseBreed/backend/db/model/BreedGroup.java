@@ -17,7 +17,7 @@ public class BreedGroup {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id")
     private int id;
-    @Column(name = "Name", nullable = false, length = 30)
+    @Column(name = "Name", unique = true, nullable = false, length = 30)
     private String name;
     @OneToMany(mappedBy = "breedGroup")
     private List<Breed> breeds = new ArrayList<>();;
