@@ -1,12 +1,8 @@
 package chooseBreed.backend.db.model;
 
 import chooseBreed.backend.db.model.enums.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 
@@ -18,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Breed {
     @Id
     @Column(name = "Name", length = 60)
