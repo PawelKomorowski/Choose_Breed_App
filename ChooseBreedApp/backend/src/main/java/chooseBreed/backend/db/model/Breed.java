@@ -2,6 +2,8 @@ package chooseBreed.backend.db.model;
 
 import chooseBreed.backend.db.model.enums.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -61,9 +63,11 @@ public class Breed {
     private BreedGroup breedGroup;
 
     @OneToMany(mappedBy = "breed")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Photo> photos = new ArrayList<>();
 
     @ManyToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Illness> illnesses = new ArrayList<>();
 
 }

@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,5 +26,6 @@ public class Illness {
     private String name;
 
     @ManyToMany(mappedBy = "illnesses")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Breed> breeds = new ArrayList<>();
 }
