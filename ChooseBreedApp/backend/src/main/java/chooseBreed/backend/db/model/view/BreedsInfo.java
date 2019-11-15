@@ -17,10 +17,6 @@ import javax.persistence.*;
 @ToString
 public class BreedsInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
-    private int id;
-
     @Column(name = "Name", length = 60)
     private String name;
 
