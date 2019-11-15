@@ -20,6 +20,10 @@ public class LivelihoodCost {
     @Column(name = "SetName")
     private String setName;
 
+    @Length(max = 20)
+    @Column(name = "Function")
+    private String function;
+
     @Column(name = "a", precision = 2, scale = 2)
     private BigDecimal a;
 
