@@ -8,6 +8,8 @@ import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 @Entity
 @Table(name = "breeds_info")
@@ -61,4 +63,13 @@ public class BreedsInfo {
     @Column(name = "Description", nullable = false)
     @Type(type = "text")
     private String description;
+
+    public String urlEncode(){
+        try {
+            return URLEncoder.encode(name, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("Error occurred during encoding breed: " + name);
+        }
+        return name;
+    }
 }
