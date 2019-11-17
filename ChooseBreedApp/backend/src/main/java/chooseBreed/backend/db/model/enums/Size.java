@@ -1,10 +1,10 @@
 package chooseBreed.backend.db.model.enums;
 
 public enum Size {
-    MALY("mały"),
-    SREDNI("średni"),
-    DUZY("duży"),
-    OLBRZYM("olbrzym");
+    MALY("Mały"),
+    SREDNI("Średni"),
+    DUZY("Duży"),
+    OLBRZYM("Olbrzym");
 
     private String size;
 

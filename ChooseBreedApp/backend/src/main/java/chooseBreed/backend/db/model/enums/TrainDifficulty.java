@@ -1,9 +1,9 @@
 package chooseBreed.backend.db.model.enums;
 
 public enum TrainDifficulty {
-    LATWO("łatwo"),
-    SREDNIO("średnio"),
-    TRUDNO("trudno");
+    LATWO("Łatwo"),
+    SREDNIO("Średnio"),
+    TRUDNO("Trudno");
 
     String difficulty;
 

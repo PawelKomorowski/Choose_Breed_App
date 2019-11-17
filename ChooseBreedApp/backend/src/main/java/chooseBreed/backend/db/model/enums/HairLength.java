@@ -1,9 +1,9 @@
 package chooseBreed.backend.db.model.enums;
 
 public enum HairLength {
-    KROTKA("krótka"),
-    SREDNIA("średnia"),
-    DLUGA("długa");
+    KROTKA("Krótka"),
+    SREDNIA("Średnia"),
+    DLUGA("Długa");
 
     String length;
 
