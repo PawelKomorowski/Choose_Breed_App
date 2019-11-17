@@ -5,6 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
+
 @Controller
 public class MainResources {
     final BreedInfoRepository breedInfoRepository;
@@ -13,27 +17,39 @@ public class MainResources {
         this.breedInfoRepository = breedInfoRepository;
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "test";
+    @GetMapping("/style")
+    public String style(){
+        return "style";
     }
 
-    @GetMapping("/main")
-    public String mainPage(){
-        return "mainView";
-    }
-
-    @GetMapping("/allBreeds")
+    @GetMapping("/all")
     public String allBreeds(Model model){
         model.addAttribute("breedsInfos", breedInfoRepository.findAll());
 
-        return "allBreedsView";
+        return "all";
     }
 
     @GetMapping("/breed/{name}")
     public String showAllBreeds(@PathVariable String name, Model model){
-        model.addAttribute("breed", breedInfoRepository.findByName(name).get(0));
+        String url;
+        try {
+            url = URLDecoder.decode(name, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            url = name;
+        }
+        model.addAttribute("breed", breedInfoRepository.findByName(url).get(0));
 
-        return "breedView";
+        return "breed";
+    }
+
+    @GetMapping("/")
+    public String search(){
+        return "search";
+    }
+
+    //ReqiestParam("?")
+    @GetMapping("/result")
+    public String result(){
+        return "search";
     }
 }
