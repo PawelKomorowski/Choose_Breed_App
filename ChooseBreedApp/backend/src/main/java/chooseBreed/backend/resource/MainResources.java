@@ -17,13 +17,9 @@ public class MainResources {
         this.breedInfoRepository = breedInfoRepository;
     }
 
-    @GetMapping("/style")
-    public String style(){
-        return "style";
-    }
-
     @GetMapping("/all")
     public String allBreeds(Model model){
+        model.addAttribute("pageTitle", "Wszystkie rasy");
         model.addAttribute("breedsInfos", breedInfoRepository.findAll());
 
         return "all";
@@ -37,19 +33,25 @@ public class MainResources {
         } catch (UnsupportedEncodingException e) {
             url = name;
         }
+
+        model.addAttribute("pageTitle", url);
         model.addAttribute("breed", breedInfoRepository.findByName(url).get(0));
 
         return "breed";
     }
 
     @GetMapping("/")
-    public String search(){
+    public String search(Model model){
+        model.addAttribute("pageTitle", "Wyszukiwanie");
+
         return "search";
     }
 
     //ReqiestParam("?")
     @GetMapping("/result")
-    public String result(){
+    public String result(Model model){
+        model.addAttribute("Wyniki wyszukiwania");
+
         return "search";
     }
 }

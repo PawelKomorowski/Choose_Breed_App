@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Wyszukiwanie | Choose Breed App</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/style/normalize.css">
-    <link rel="stylesheet" href="/style/style.css">
-
-    <!-- Roboto fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,300italic,400&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-</head>
+<#include "/common/header.ftl">
 
 <body class="page">
+
 <header class="header header--compact color--teal text--white">
     <h1 class="header__title">
         <a class="header__link" href="/">Choose Breed App</a>
@@ -28,7 +15,7 @@
     </nav>
 </header>
 <main class="page__content" id="search-card">
-    <h2 class="heading--2">Wyszukiwanie</h2>
+    <h2 class="heading--2">${pageTitle}</h2>
 
     <article class="card color--white text--black">
         <h3 class="card__title">Cechy</h3>
@@ -207,4 +194,4 @@
 </main>
 </body>
 
-</html>
+<#include "/common/footer.ftl">
