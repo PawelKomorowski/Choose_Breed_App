@@ -178,6 +178,5 @@
         </div>
     </article>
 </main>
-</body>
 
 <#include "/common/footer.ftl">
