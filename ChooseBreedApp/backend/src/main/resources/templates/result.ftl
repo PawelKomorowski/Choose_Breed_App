@@ -1,4 +1,4 @@
-<#iclude "/common/header.ftl">
+<#include "/common/header.ftl">
 
 <body class="page">
 <header class="header header--compact color--teal text--white">
