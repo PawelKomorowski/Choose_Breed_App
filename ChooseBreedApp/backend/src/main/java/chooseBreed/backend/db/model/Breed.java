@@ -30,6 +30,10 @@ public class Breed {
     private short weight;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "IllnessPossibility", nullable = false, length = 20)
+    private IllnessPossibility illnessPossibility;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "CleaningDifficulty", nullable = false, length = 20)
     private CleaningDifficulty cleaningDifficulty;
 
@@ -65,9 +69,4 @@ public class Breed {
     @OneToMany(mappedBy = "breed")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Photo> photos = new ArrayList<>();
-
-    @ManyToMany
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Illness> illnesses = new ArrayList<>();
-
 }
