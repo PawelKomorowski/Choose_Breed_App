@@ -13,26 +13,19 @@ import java.util.List;
 public class runner implements CommandLineRunner {
     private final BreedGroupRepository breedGroupRepository;
     private final BreedRepository breedRepository;
-    private final IllnessRepository illnessRepository;
     private final PhotoRepository photoRepository;
     private final BreedInfoRepository breedInfoRepository;
 
-    public runner(BreedGroupRepository breedGroupRepository, BreedRepository breedRepository, IllnessRepository illnessRepository, PhotoRepository photoRepository, BreedInfoRepository breedInfoRepository) {
+    public runner(BreedGroupRepository breedGroupRepository, BreedRepository breedRepository, PhotoRepository photoRepository, BreedInfoRepository breedInfoRepository) {
         this.breedGroupRepository = breedGroupRepository;
         this.breedRepository = breedRepository;
-        this.illnessRepository = illnessRepository;
         this.photoRepository = photoRepository;
         this.breedInfoRepository = breedInfoRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        /*
-         * Notatki:
-         * Przy relacji 1:N wystarczy dać obiekt po stronie 1 np breed i photo -> setObiekt zamiast dodawać go do listy [1]
-         * Przy trelacji N:M wystarczzy dodać do listy po jednej ze stron np breed i illenss [2]
-         */
-        //Add groups
+////        Add groups
 //        BreedGroup breedGroup1 = new BreedGroup();
 //        BreedGroup breedGroup2 = new BreedGroup();
 //        breedGroup1.setName("pasterskie_i_owczarki");
@@ -40,19 +33,11 @@ public class runner implements CommandLineRunner {
 //        breedGroupRepository.save(breedGroup1);
 //        breedGroupRepository.save(breedGroup2);
 //
-//        //Add illnesses
-//        Illness illness1 = new Illness();
-//        Illness illness2 = new Illness();
-//        illness1.setName("Illness1");
-//        illness2.setName("Illness2");
-//        illnessRepository.save(illness1);
-//        illnessRepository.save(illness2);
-//
 //        //Add breeds
 //        Breed breed1 = new Breed();
-//        Breed breed2 = new Breed();
 //        breed1.setName("border");
 //        breed1.setBreedGroup(breedGroup1);
+//        breed1.setIllnessPossibility(IllnessPossibility.SREDNIA);
 //        breed1.setCleaningDifficulty(CleaningDifficulty.SREDNIO);
 //        breed1.setCost((short) 2500);
 //        breed1.setDescription("pies1");
@@ -63,11 +48,11 @@ public class runner implements CommandLineRunner {
 //        breed1.setLivelihoodCost((short) 130);
 //        breed1.setTrainDifficulty(TrainDifficulty.LATWO);
 //        breed1.setSize(Size.SREDNI);
-//        //[2]
-//        breed1.getIllnesses().add(illness1);
 //
+//        Breed breed2 = new Breed();
 //        breed2.setName("corgi");
 //        breed2.setBreedGroup(breedGroup1);
+//        breed2.setIllnessPossibility(IllnessPossibility.DUZA);
 //        breed2.setCleaningDifficulty(CleaningDifficulty.LATWO);
 //        breed2.setCost((short) 5000);
 //        breed2.setDescription("pies2");
@@ -86,11 +71,6 @@ public class runner implements CommandLineRunner {
 //        Photo photo2 = new Photo();
 //        photo1.setFile("photo1");
 //        photo2.setFile("photo2");
-//        //[1]
-//        photo1.setBreed(breed1);
-//        photo2.setBreed(breed2);
-//        photoRepository.save(photo1);
-//        photoRepository.save(photo2);
 //
 //        List<BreedsInfo> breedsInfos = breedInfoRepository.findAll();
 //        for(BreedsInfo b : breedsInfos)
