@@ -23,22 +23,6 @@
                         <label for="size3" class="checkbox__label">Duży</label>
                     </div><br>
                 </div>
-<#--                <!-- Waga &ndash;&gt;-->
-<#--                <div class="grid">-->
-<#--                    <h4 class="heading--6 grid__col--1">Waga</h4>-->
-<#--                    <div class="checkbox grid__col--1-3">-->
-<#--                        <input type="checkbox" id="weight1" class="checkbox__input" name="weight" value="mala">-->
-<#--                        <label for="weight1" class="checkbox__label">Mała</label>-->
-<#--                    </div><br>-->
-<#--                    <div class="checkbox grid__col--1-3">-->
-<#--                        <input type="checkbox" id="weight2" class="checkbox__input" name="weight" value="srednia">-->
-<#--                        <label for="weight2" class="checkbox__label">Średnia</label>-->
-<#--                    </div><br>-->
-<#--                    <div class="checkbox grid__col--1-3">-->
-<#--                        <input type="checkbox" id="weight3" class="checkbox__input" name="weight" value="duza">-->
-<#--                        <label for="weight3" class="checkbox__label">Duża</label>-->
-<#--                    </div><br>-->
-<#--                </div>-->
                 <!-- Choroby -->
                 <div class="grid">
                     <h4 class="heading--6 grid__col--1">Skłonność do chorób</h4>
@@ -157,10 +141,6 @@
                     <div class="checkbox grid__col--1-4">
                         <input type="checkbox" id="hair_type1" class="checkbox__input" name="hair_type" value="gladka">
                         <label for="hair_type1" class="checkbox__label">Gładka</label>
-                    </div><br>
-                    <div class="checkbox grid__col--1-4">
-                        <input type="checkbox" id="hair_type2" class="checkbox__input" name="hair_type" value="falista">
-                        <label for="hair_type2" class="checkbox__label">Falista</label>
                     </div><br>
                     <div class="checkbox grid__col--1-4">
                         <input type="checkbox" id="hair_type3" class="checkbox__input" name="hair_type" value="puchata">
