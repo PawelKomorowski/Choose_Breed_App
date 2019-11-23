@@ -2,7 +2,6 @@ package chooseBreed.backend.db.model.enums;
 
 public enum HairType {
     GLADKA("Gładka"),
-    FALISTA("Falista"),
     PUCHATA("Puchata"),
     SZORSTKA("Szorstka");
 
