@@ -54,23 +54,19 @@ public class UserResources {
 
     @GetMapping("/result")
     public String result(Model model, @RequestParam(required = false) List<String> size,
-//                         @RequestParam(required = false) List<String> weight,
                          @RequestParam(required = false) List<String> illnesses, @RequestParam(required = false) List<String> live_length,
                          @RequestParam(required = false) List<String> cost, @RequestParam(required = false) List<String> livelihood_cost,
                          @RequestParam(required = false) List<String> cleaning_difficulty, @RequestParam(required = false) List<String> training_difficulty,
                          @RequestParam(required = false) List<String> hair_length, @RequestParam(required = false) List<String> hair_type){
 
-        List<BreedsInfo> breedsInfos = breedInfoRepository.findByParams(stringToSize(size),
+        List<BreedsInfo> breedsInfos = breedInfoRepository.findByParams(stringToSize(size), stringToIllnessPossibility(illnesses),
                 stringToCleaningDifficulty(cleaning_difficulty), stringToTrainDifficulty(training_difficulty),
                 stringToHairLength(hair_length), stringToHairType(hair_type));
 
         for(BreedsInfo b : breedsInfos)
             System.out.println(b.toString());
 
-
-
-
-
+        model.addAttribute("results", breedsInfos);
         model.addAttribute("pageTitle", "Wyniki wyszukiwania");
 
         return "result";
@@ -80,7 +76,7 @@ public class UserResources {
         Collection<Size> collection = new ArrayList<>();
         if(size == null){
             collection.add(null);
-            return  collection;
+            return collection;
         }
 
         for(String s : size){
@@ -103,7 +99,7 @@ public class UserResources {
         Collection<CleaningDifficulty> collection = new ArrayList<>();
         if(cleaningDifficulty == null){
             collection.add(null);
-            return  collection;
+            return collection;
         }
 
         for(String s : cleaningDifficulty){
@@ -124,7 +120,7 @@ public class UserResources {
         Collection<TrainDifficulty> collection = new ArrayList<>();
         if(trainDifficulty == null){
             collection.add(null);
-            return  collection;
+            return collection;
         }
 
         for(String s : trainDifficulty){
@@ -145,7 +141,7 @@ public class UserResources {
         Collection<HairLength> collection = new ArrayList<>();
         if(hairLength == null){
             collection.add(null);
-            return  collection;
+            return collection;
         }
 
         for(String s : hairLength){
@@ -166,7 +162,7 @@ public class UserResources {
         Collection<HairType> collection = new ArrayList<>();
         if(hairType == null){
             collection.add(null);
-            return  collection;
+            return collection;
         }
 
         for(String s : hairType){
@@ -175,9 +171,28 @@ public class UserResources {
                     break;
                 case "szorstka": collection.add(HairType.SZORSTKA);
                     break;
-                case "falista": collection.add(HairType.FALISTA);
-                    break;
                 case "gladka": collection.add(HairType.GLADKA);
+                    break;
+                default: break;
+            }
+        }
+        return collection;
+    }
+
+    private Collection<IllnessPossibility> stringToIllnessPossibility(List<String> illnessPossibility){
+        Collection<IllnessPossibility> collection = new ArrayList<>();
+        if(illnessPossibility == null){
+            collection.add(null);
+            return collection;
+        }
+
+        for(String s : illnessPossibility){
+            switch (s){
+                case "mala": collection.add(IllnessPossibility.MALA);
+                    break;
+                case "srednia": collection.add(IllnessPossibility.SREDNIA);
+                    break;
+                case "duza": collection.add(IllnessPossibility.DUZA);
                     break;
                 default: break;
             }
