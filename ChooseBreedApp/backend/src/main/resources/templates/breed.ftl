@@ -35,7 +35,7 @@
                     </tr>
                     <tr class="table__row">
                         <td class="table__cell table__cell--non-numeric">Skłonność do chorób</td>
-                        <td class="table__cell table__cell--non-numeric">${breed.illnessesCount}</td>
+                        <td class="table__cell table__cell--non-numeric">${breed.illnessPossibility.getIllness()}</td>
                     </tr>
                     <tr class="table__row">
                         <td class="table__cell table__cell--non-numeric">Długość życia</td>
