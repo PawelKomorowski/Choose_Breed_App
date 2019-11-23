@@ -32,8 +32,9 @@ public class BreedsInfo {
     @Column(name = "Weight", nullable = false)
     private short weight;
 
-    @Column(name = "IllnessesCount")
-    private short illnessesCount;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "IllnessPossibility", nullable = false, length = 20)
+    private IllnessPossibility illnessPossibility;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "CleaningDifficulty", nullable = false, length = 20)
