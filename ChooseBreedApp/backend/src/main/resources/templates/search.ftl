@@ -22,6 +22,10 @@
                         <input type="checkbox" id="size3" class="checkbox__input" name="size" value="duzy">
                         <label for="size3" class="checkbox__label">Duży</label>
                     </div><br>
+                    <div class="checkbox grid__col--1-3">
+                        <input type="checkbox" id="size4" class="checkbox__input" name="size" value="olbrzym">
+                        <label for="size4" class="checkbox__label">Olbrzym</label>
+                    </div><br>
                 </div>
                 <!-- Choroby -->
                 <div class="grid">
