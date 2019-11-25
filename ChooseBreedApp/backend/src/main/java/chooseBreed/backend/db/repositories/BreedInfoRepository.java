@@ -12,7 +12,9 @@ import java.util.List;
 public interface BreedInfoRepository extends JpaRepository<BreedsInfo, String> {
     List<BreedsInfo> findByName(String name);
 
-    @Query(value = "SELECT b FROM BreedsInfo b WHERE b.size IN (:size) OR b.cleaningDifficulty IN (:cleaningDifficulty) " +
+    @Query(value = "SELECT b FROM BreedsInfo b " +
+            "WHERE b.size IN (:size) " +
+            "OR b.cleaningDifficulty IN (:cleaningDifficulty) " +
             "OR b.illnessPossibility IN (:illnessPossibility) " +
             "OR b.trainDifficulty IN (:trainingDifficulty) " +
             "OR b.hairLength IN (:hairLength) " +
