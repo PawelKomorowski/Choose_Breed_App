@@ -21,18 +21,18 @@ public class LivelihoodCost {
     private String setName;
 
     @Length(max = 20)
-    @Column(name = "Function")
+    @Column(name = "Function", nullable = false)
     private String function;
 
-    @Column(name = "a", precision = 2, scale = 2)
-    private BigDecimal a;
+    @Column(name = "a")
+    private float a;
 
-    @Column(name = "b", precision = 2, scale = 2)
-    private BigDecimal b;
+    @Column(name = "b")
+    private float b;
 
-    @Column(name = "c", precision = 2, scale = 2)
-    private BigDecimal c;
+    @Column(name = "c")
+    private float c;
 
-    @Column(name = "d", precision = 2, scale = 2)
-    private BigDecimal d;
+    @Column(name = "d")
+    private float d;
 }
