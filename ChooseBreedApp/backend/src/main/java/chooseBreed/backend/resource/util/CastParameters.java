@@ -1,12 +1,17 @@
 package chooseBreed.backend.resource.util;
 
+import chooseBreed.backend.db.model.Cost;
+import chooseBreed.backend.db.model.LiveLength;
+import chooseBreed.backend.db.model.LivelihoodCost;
+import chooseBreed.backend.db.model.Weight;
 import chooseBreed.backend.db.model.enums.*;
+import chooseBreed.backend.resource.wrappers.FuzzyParam;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Parameters {
+public class CastParameters {
     
     public static Collection<Size> stringToSize(List<String> size){
         Collection<Size> collection = new ArrayList<>();
@@ -42,7 +47,7 @@ public class Parameters {
             switch (s){
                 case "latwo": collection.add(CleaningDifficulty.LATWO);
                     break;
-                case "sredno": collection.add(CleaningDifficulty.SREDNIO);
+                case "srednio": collection.add(CleaningDifficulty.SREDNIO);
                     break;
                 case "trudno": collection.add(CleaningDifficulty.TRUDNO);
                     break;
@@ -63,7 +68,7 @@ public class Parameters {
             switch (s){
                 case "latwo": collection.add(TrainDifficulty.LATWO);
                     break;
-                case "sredno": collection.add(TrainDifficulty.SREDNIO);
+                case "srednio": collection.add(TrainDifficulty.SREDNIO);
                     break;
                 case "trudno": collection.add(TrainDifficulty.TRUDNO);
                     break;
@@ -135,4 +140,36 @@ public class Parameters {
         }
         return collection;
     }
+
+    public static List<FuzzyParam> castCostParams(List<Cost> costs){
+        List<FuzzyParam> fuzzyParams = new ArrayList<>();
+        for(Cost c : costs){
+            fuzzyParams.add(new FuzzyParam(c));
+        }
+        return fuzzyParams;
+    }
+
+    public static List<FuzzyParam> castLiveLengthParams(List<LiveLength> liveLengths){
+        List<FuzzyParam> fuzzyParams = new ArrayList<>();
+        for(LiveLength l : liveLengths){
+            fuzzyParams.add(new FuzzyParam(l));
+        }
+        return fuzzyParams;
+    }
+
+    public static List<FuzzyParam> castLivelihoodCostParams(List<LivelihoodCost> livelihoodCosts){
+        List<FuzzyParam> fuzzyParams = new ArrayList<>();
+        for(LivelihoodCost l : livelihoodCosts){
+            fuzzyParams.add(new FuzzyParam(l));
+        }
+        return fuzzyParams;
+    }
+    public static List<FuzzyParam> castWeightParams(List<Weight> weights){
+        List<FuzzyParam> fuzzyParams = new ArrayList<>();
+        for(Weight w : weights){
+            fuzzyParams.add(new FuzzyParam(w));
+        }
+        return fuzzyParams;
+    }
+
 }
