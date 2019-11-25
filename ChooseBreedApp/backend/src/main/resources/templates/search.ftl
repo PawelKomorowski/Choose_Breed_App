@@ -10,19 +10,19 @@
                 <!-- Rozmiar -->
                 <div class="grid">
                     <h4 class="heading--6 grid__col--1">Rozmiar</h4>
-                    <div class="checkbox grid__col--1-3">
+                    <div class="checkbox grid__col--1-4">
                         <input type="checkbox" id="size1" class="checkbox__input" name="size" value="maly">
                         <label for="size1" class="checkbox__label">Mały</label>
                     </div><br>
-                    <div class="checkbox grid__col--1-3">
+                    <div class="checkbox grid__col--1-4">
                         <input type="checkbox" id="size2" class="checkbox__input" name="size" value="sredni">
                         <label for="size2" class="checkbox__label">Średni</label>
                     </div><br>
-                    <div class="checkbox grid__col--1-3">
+                    <div class="checkbox grid__col--1-4">
                         <input type="checkbox" id="size3" class="checkbox__input" name="size" value="duzy">
                         <label for="size3" class="checkbox__label">Duży</label>
                     </div><br>
-                    <div class="checkbox grid__col--1-3">
+                    <div class="checkbox grid__col--1-4">
                         <input type="checkbox" id="size4" class="checkbox__input" name="size" value="olbrzym">
                         <label for="size4" class="checkbox__label">Olbrzym</label>
                     </div><br>
@@ -142,17 +142,17 @@
                 <!-- Typ sierści -->
                 <div class="grid">
                     <h4 class="heading--6 grid__col--1">Typ sierści</h4>
-                    <div class="checkbox grid__col--1-4">
+                    <div class="checkbox grid__col--1-3">
                         <input type="checkbox" id="hair_type1" class="checkbox__input" name="hair_type" value="gladka">
                         <label for="hair_type1" class="checkbox__label">Gładka</label>
                     </div><br>
-                    <div class="checkbox grid__col--1-4">
-                        <input type="checkbox" id="hair_type3" class="checkbox__input" name="hair_type" value="puchata">
-                        <label for="hair_type3" class="checkbox__label">Puchata</label>
+                    <div class="checkbox grid__col--1-3">
+                        <input type="checkbox" id="hair_type2" class="checkbox__input" name="hair_type" value="puchata">
+                        <label for="hair_type2" class="checkbox__label">Puchata</label>
                     </div><br>
-                    <div class="checkbox grid__col--1-4">
-                        <input type="checkbox" id="hair_type4" class="checkbox__input" name="hair_type" value="szorstka">
-                        <label for="hair_type4" class="checkbox__label">Szorstka</label>
+                    <div class="checkbox grid__col--1-3">
+                        <input type="checkbox" id="hair_type3" class="checkbox__input" name="hair_type" value="szorstka">
+                        <label for="hair_type3" class="checkbox__label">Szorstka</label>
                     </div><br>
                 </div>
             </form>
