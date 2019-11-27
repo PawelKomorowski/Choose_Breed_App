@@ -19,6 +19,20 @@ public class AdminResources {
         this.photoRepository = photoRepository;
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("pageTitle", "Logowanie");
+
+        return "login";
+    }
+
+    @PostMapping("/auth")
+    public String auth() {
+        // TODO: Handle user authentication
+
+        return "";
+    }
+
     @GetMapping("/edit/{name}")
     public String editBreed(@PathVariable String name, Model model) {
         String url;
