@@ -4,6 +4,7 @@ import chooseBreed.backend.db.model.enums.*;
 import chooseBreed.backend.db.model.view.BreedsInfo;
 import chooseBreed.backend.db.repositories.*;
 import chooseBreed.backend.resource.util.AssessResult;
+import chooseBreed.backend.resource.wrappers.FuzzyParam;
 import chooseBreed.backend.resource.wrappers.Result;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,16 +44,16 @@ public class UserResources {
     }
 
     @GetMapping("/breed/{name}")
-    public String showAllBreeds(@PathVariable String name, Model model){
-        String url;
+    public String showBreed(@PathVariable String name, Model model){
+        String nameDecoded;
         try {
-            url = URLDecoder.decode(name, "UTF-8");
+            nameDecoded = URLDecoder.decode(name, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            url = name;
+            nameDecoded = name;
         }
 
-        model.addAttribute("pageTitle", url);
-        model.addAttribute("breed", breedInfoRepository.findByName(url).get(0));
+        model.addAttribute("pageTitle", nameDecoded);
+        model.addAttribute("breed", breedInfoRepository.findByName("Hawańczyk").get(0));
 
         return "breed";
     }
@@ -78,17 +79,22 @@ public class UserResources {
         Collection<HairLength> hairLengthParam = stringToHairLength(hair_length);
         Collection<HairType> hairTypeParam = stringToHairType(hair_type);
 
+        List<FuzzyParam> fuzzyLiveLength = castLiveLengthParams(liveLengthRepository.findAll());
+        List<FuzzyParam> fuzzyCost = castCostParams(costRepository.findAll());
+        List<FuzzyParam> fuzzyLivelihoodCost = castLivelihoodCostParams(livelihoodCostRepository.findAll());
+        List<FuzzyParam> fuzzyWeight = castWeightParams(weightRepository.findAll());
+
+        List<Short> costValues = getExtremeValuesForParams(fuzzyCost, cost);
+        List<Short> liveLengthValues = getExtremeValuesForParams(fuzzyLiveLength, live_length);
+        List<Short> livelihoodCostValues = getExtremeValuesForParams(fuzzyLivelihoodCost, livelihood_cost);
 
         List<BreedsInfo> breedsInfos = breedInfoRepository.findByParams(sizeParam, illnessParam, cleaningParam,
-                trainParam, hairLengthParam, hairTypeParam);
+                trainParam, hairLengthParam, hairTypeParam, costValues.get(0), costValues.get(1),
+                liveLengthValues.get(0), liveLengthValues.get(1), livelihoodCostValues.get(0), livelihoodCostValues.get(1));
 
         List<Result> results = new AssessResult().assess(breedsInfos,  size, illnessParam, live_length, cost,
                 livelihood_cost, cleaningParam, trainParam, hairLengthParam, hairTypeParam,
-                castLiveLengthParams(liveLengthRepository.findAll()), castCostParams(costRepository.findAll()),
-                castLivelihoodCostParams(livelihoodCostRepository.findAll()), castWeightParams(weightRepository.findAll()));
-
-        for(Result r : results)
-            r.calculatePercentageScore();
+                fuzzyLiveLength, fuzzyCost, fuzzyLivelihoodCost, fuzzyWeight);
 
         model.addAttribute("results", results);
         model.addAttribute("pageTitle", "Wyniki wyszukiwania");
