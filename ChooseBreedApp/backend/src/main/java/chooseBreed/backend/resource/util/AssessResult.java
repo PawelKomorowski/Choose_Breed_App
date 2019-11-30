@@ -5,9 +5,7 @@ import chooseBreed.backend.db.model.view.BreedsInfo;
 import chooseBreed.backend.resource.wrappers.FuzzyParam;
 import chooseBreed.backend.resource.wrappers.Result;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class AssessResult {
     private final int enumScore = 1;
@@ -21,24 +19,27 @@ public class AssessResult {
         if(breedsInfos.size() == 0) {
             return new ArrayList<>();
         }
+        int paramsCount = countOfParams(size,illnessPossibility, live_length,
+                cost,livelihood_cost, cleaningDifficulty, trainingDifficulty, hairLength, hairType);
         IndicatorFunctions indicatorFunctions = new IndicatorFunctions(costParams, liveLengthParams, livelihoodCostParams, weightParams);
         List<Result> results = castBreedToResult(breedsInfos);
-        //TODO assess if breed enums values are in lists
-        //TODO assess how much number values fit fuzzy values
         for(Result r : results){
             BreedsInfo b = r.getBreedsInfo();
 
-//            checkEnumParam(r, size.contains(b.getSize()));
             checkEnumParam(r, illnessPossibility.contains(b.getIllnessPossibility()));
             checkEnumParam(r, cleaningDifficulty.contains(b.getCleaningDifficulty()));
             checkEnumParam(r, trainingDifficulty.contains(b.getTrainDifficulty()));
             checkEnumParam(r, hairLength.contains(b.getHairLength()));
             checkEnumParam(r, hairType.contains(b.getHairType()));
+
             r.addToScore(indicatorFunctions.checkCost(b, cost));
             r.addToScore(indicatorFunctions.checkLiveLength(b, live_length));
             r.addToScore(indicatorFunctions.checkLivelihoodCost(b, livelihood_cost));
             r.addToScore(indicatorFunctions.checkWeight(b, size));
+            r.setMaxScore(paramsCount);
+            r.calculatePercentageScore();
         }
+        results.sort((Result r1, Result r2) -> Float.compare(r2.getPercentageScore(), r1.getPercentageScore()));
         return results;
     }
 
@@ -56,6 +57,29 @@ public class AssessResult {
         return results;
     }
 
-
-
+    private int countOfParams(List<String> size, Collection<IllnessPossibility> illnessPossibility,
+                                   List<String> live_length, List<String> cost, List<String> livelihood_cost,
+                                   Collection<CleaningDifficulty> cleaningDifficulty, Collection<TrainDifficulty> trainingDifficulty,
+                                   Collection<HairLength> hairLength, Collection<HairType> hairType){
+        int paramCount = 0;
+        if(size != null)
+            paramCount++;
+        if(!illnessPossibility.contains(null))
+            paramCount++;
+        if(live_length != null)
+            paramCount++;
+        if(cost != null)
+            paramCount++;
+        if(livelihood_cost != null)
+            paramCount++;
+        if(!cleaningDifficulty.contains(null))
+            paramCount++;
+        if(!trainingDifficulty.contains(null))
+            paramCount++;
+        if(!hairLength.contains(null))
+            paramCount++;
+        if(!hairType.contains(null))
+            paramCount++;
+        return paramCount;
+    }
 }
