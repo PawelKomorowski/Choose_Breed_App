@@ -13,6 +13,9 @@
                     <th class="table__cell table__cell--head table__cell--non-numeric">Skłonność do chorób</th>
                     <th class="table__cell table__cell--head table__cell--non-numeric">Długość życia</th>
                     <th class="table__cell table__cell--head">Cena</th>
+                    <#if isAdmin?? && isAdmin==true>
+                        <th class="table__cell table__cell--head table__cell--non-numeric">Akcje</th>
+                    </#if>
                 </tr>
                 </thead>
                 <tbody class="table__body">
@@ -25,6 +28,11 @@
                             <td class="table__cell table__cell--non-numeric">${breed.illnessPossibility.getIllness()}</td>
                             <td class="table__cell table__cell--non-numeric">${breed.liveLength}</td>
                             <td class="table__cell">${breed.cost}</td>
+                            <#if isAdmin?? && isAdmin==true>
+                                <td class="table__cell table__cell--head table__cell--non-numeric">
+                                    <a href="/edit/${breed.urlEncode()}" class="button button--flat text--teal color--white">edytuj</a>
+                                </td>
+                            </#if>
                         </tr>
                     </#list>
                 </tbody>
