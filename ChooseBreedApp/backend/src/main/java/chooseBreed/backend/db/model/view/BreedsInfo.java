@@ -3,6 +3,7 @@ package chooseBreed.backend.db.model.view;
 import chooseBreed.backend.db.model.enums.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Type;
@@ -15,6 +16,7 @@ import java.net.URLEncoder;
 @Table(name = "breeds_info")
 @Immutable
 @Getter
+@Setter
 @NoArgsConstructor
 @ToString
 public class BreedsInfo {
@@ -70,7 +72,7 @@ public class BreedsInfo {
             return URLEncoder.encode(name, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             System.out.println("Error occurred during encoding breed: " + name);
+            return "error";
         }
-        return name;
     }
 }
