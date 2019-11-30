@@ -1,0 +1,310 @@
+{
+  "id": "a7ae95d0-da11-4197-b1a2-e7cd8112b1bc",
+  "version": "2.0",
+  "name": "Choose Breed App",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "ec22c9d7-dfc8-4640-aad7-397eb02a4060",
+    "name": "Search first small breed",
+    "commands": [{
+      "id": "afc1b310-5b51-4a1a-88ff-7e7636f9281f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02046c7a-769a-48de-a8cb-bc5fdaed48a5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "968x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6e1f7d6-8e14-4d93-977f-f3d202b2a951",
+      "comment": "",
+      "command": "click",
+      "target": "css=.grid__col--1-4:nth-child(2) > .checkbox__label",
+      "targets": [
+        ["css=.grid__col--1-4:nth-child(2) > .checkbox__label", "css:finder"],
+        ["xpath=//form[@id='search']/div/div/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Mały')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "99fae8ac-0a54-45fa-9d99-4ea09a68183c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card__button",
+      "targets": [
+        ["css=.card__button", "css:finder"],
+        ["xpath=//input[@value='Szukaj']", "xpath:attributes"],
+        ["xpath=//main[@id='search-card']/article/div[2]/input", "xpath:idRelative"],
+        ["xpath=//article/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd2fe53d-05e4-4ea3-b80c-6b08e066412a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(2) .card__button",
+      "targets": [
+        ["css=.card:nth-child(2) .card__button", "css:finder"],
+        ["xpath=//a[contains(text(),'Więcej')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/breed/Hawa%C5%84czyk')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "823facfc-133e-43df-b8df-12d1365a0beb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.heading--2",
+      "targets": [
+        ["css=.heading--2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Hawańczyk')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5820598-c68e-4fda-8943-adc100ee69af",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.heading--2",
+      "targets": [],
+      "value": "Chiuaua"
+    }]
+  }, {
+    "id": "41e44c85-1af0-4449-8c40-d2c01bef9eae",
+    "name": "Search second big breed",
+    "commands": [{
+      "id": "f8c6c93b-dfea-4de7-a14e-2a11990a68b3",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c11014d6-932b-4bc0-a7fb-d49f2be066cc",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "968x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fc6e48d8-9b05-4faf-a364-7bc38941263e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.grid__col--1-4:nth-child(6) > .checkbox__label",
+      "targets": [
+        ["css=.grid__col--1-4:nth-child(6) > .checkbox__label", "css:finder"],
+        ["xpath=//form[@id='search']/div/div[3]/label", "xpath:idRelative"],
+        ["xpath=//div[3]/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Duży')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b095f81-fb55-48f0-9552-82f82f3a0cec",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card__button",
+      "targets": [
+        ["css=.card__button", "css:finder"],
+        ["xpath=//input[@value='Szukaj']", "xpath:attributes"],
+        ["xpath=//main[@id='search-card']/article/div[2]/input", "xpath:idRelative"],
+        ["xpath=//article/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8d532ca-c90f-43a6-9917-396c19d230a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(3) .card__button",
+      "targets": [
+        ["css=.card:nth-child(3) .card__button", "css:finder"],
+        ["xpath=(//a[contains(text(),'Więcej')])[2]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/breed/Rhodesian+ridgebackk')]", "xpath:href"],
+        ["xpath=//article[2]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "941ee8c1-d59f-4a0b-9886-7f00f8d538a8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.heading--2",
+      "targets": [
+        ["css=.heading--2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Rhodesian ridgebackk')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bd5e92b9-33aa-4a55-a739-2c902b81e45f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.heading--2",
+      "targets": [],
+      "value": "Rhodesian ridgeback"
+    }]
+  }, {
+    "id": "fc69f716-bc51-42a6-a298-b882626c3350",
+    "name": "Search last breed with small cost",
+    "commands": [{
+      "id": "fa19427c-4e3b-40d6-9f06-ba48ee8afcba",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "86db212c-d512-4cfa-b7ef-f73394a9daa3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "968x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2a29d7dc-b970-4c6a-90b6-b3931c051a11",
+      "comment": "",
+      "command": "click",
+      "target": "css=.grid:nth-child(4) > .checkbox:nth-child(2) > .checkbox__label",
+      "targets": [
+        ["css=.grid:nth-child(4) > .checkbox:nth-child(2) > .checkbox__label", "css:finder"],
+        ["xpath=//form[@id='search']/div[4]/div/label", "xpath:idRelative"],
+        ["xpath=//div[4]/div/label", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d3d6f14-0cdc-49a1-b219-17e41f714bbb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card__button",
+      "targets": [
+        ["css=.card__button", "css:finder"],
+        ["xpath=//input[@value='Szukaj']", "xpath:attributes"],
+        ["xpath=//main[@id='search-card']/article/div[2]/input", "xpath:idRelative"],
+        ["xpath=//article/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c2b5a47-4bf2-458f-b8b7-034fc313cf28",
+      "comment": "",
+      "command": "click",
+      "target": "css=.card:nth-child(33) .card__button",
+      "targets": [
+        ["css=.card:nth-child(33) .card__button", "css:finder"],
+        ["xpath=(//a[contains(text(),'Więcej')])[32]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/breed/Wy%C5%BCe%C5%82+niemiecki')]", "xpath:href"],
+        ["xpath=//article[32]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "39682c9e-a7c9-4747-b7e4-d9de7736a3c1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.heading--2",
+      "targets": [
+        ["css=.heading--2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Wyżeł niemiecki')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "44e92fbe-0343-4204-9efd-ff9f0ee198e1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.heading--2",
+      "targets": [],
+      "value": "Wyżeł niemiecki"
+    }]
+  }, {
+    "id": "fad1c242-a3e6-4cb1-b34a-805a12f286f0",
+    "name": "Select third breed from all breeds view",
+    "commands": [{
+      "id": "41fc5edc-8303-4cd1-b798-d196941b620f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1af3f9b8-6179-4b06-86c1-f454b19e0a67",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "968x1040",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70e81b3b-9e87-4491-bd4f-9a3ee59b200c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Wszystkie rasy",
+      "targets": [
+        ["linkText=Wszystkie rasy", "linkText"],
+        ["css=.nav__item:nth-child(2) > .nav__link", "css:finder"],
+        ["xpath=//a[contains(text(),'Wszystkie rasy')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/all')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Wszystkie rasy')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "434f18c1-25d8-49e7-8794-baa4191ef47b",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Golden",
+      "targets": [
+        ["linkText=Golden", "linkText"],
+        ["css=.table__row:nth-child(3) .typography--link", "css:finder"],
+        ["xpath=//a[contains(text(),'Golden')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/breed/Golden')]", "xpath:href"],
+        ["xpath=//tr[3]/td/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Golden')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9191ca27-e951-4b45-9384-ef5c62596c5a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.heading--2",
+      "targets": [
+        ["css=.heading--2", "css:finder"],
+        ["xpath=//h2", "xpath:position"],
+        ["xpath=//h2[contains(.,'Golden')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3822bdae-86da-4eaf-ada8-e7b16750b2bc",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.heading--2",
+      "targets": [],
+      "value": "Golden"
+    }]
+  }],
+  "suites": [{
+    "id": "025fb4a4-4693-4de0-9ae5-4d34414edc0c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }, {
+    "id": "3915c5ac-68ae-4519-86f4-60ec7577af90",
+    "name": "Search",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ec22c9d7-dfc8-4640-aad7-397eb02a4060", "41e44c85-1af0-4449-8c40-d2c01bef9eae", "fc69f716-bc51-42a6-a298-b882626c3350"]
+  }, {
+    "id": "f2b2dbbf-fd7f-4345-9c78-7bdb1fc19539",
+    "name": "Select",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fad1c242-a3e6-4cb1-b34a-805a12f286f0"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
