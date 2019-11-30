@@ -172,4 +172,39 @@ public class CastParameters {
         return fuzzyParams;
     }
 
+    public static List<Short> getExtremeValuesForParams(List<FuzzyParam> fuzzySet, List<String> values){
+        short min = Short.MAX_VALUE, max = Short.MIN_VALUE;
+        List<Short> result = new ArrayList<>();
+        FuzzyParam fuzzyParam;
+        if(values == null){
+            result.add((short)(-2));
+            result.add((short)(-1));
+            return result;
+        }
+        for(String s : values){
+            fuzzyParam = getSet(fuzzySet, s);
+            if(fuzzyParam != null){
+                if(min > fuzzyParam.getA())
+                    min = fuzzyParam.getA();
+                if(fuzzyParam.getSetName().equals("sredni") || fuzzyParam.getSetName().equals("srednia")){
+                    if(max < fuzzyParam.getC())
+                        max = fuzzyParam.getC();
+                } else {
+                    if(max < fuzzyParam.getB())
+                        max = fuzzyParam.getB();
+                }
+            }
+        }
+        result.add(min);
+        result.add(max);
+        return result;
+    }
+
+    private static FuzzyParam getSet(List<FuzzyParam> fuzzyCost, String set){
+        for(FuzzyParam f : fuzzyCost) {
+            if (f.getSetName().equals(set))
+                return f;
+        }
+        return null;
+    }
 }
