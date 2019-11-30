@@ -2,18 +2,20 @@ package chooseBreed.backend.resource.wrappers;
 
 import chooseBreed.backend.db.model.view.BreedsInfo;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-public class Result {
+@Setter
+public class Result{
     private BreedsInfo breedsInfo;
     private float score;
     private float maxScore;
-    private int percentageScore;
+    private float percentageScore;
 
     public Result(BreedsInfo breedsInfo) {
         this.breedsInfo = breedsInfo;
         score = 0;
-        maxScore = 9;//TODO czy na pewno 9?
+        percentageScore = 0;
     }
 
     public void addToScore(float val){
@@ -21,6 +23,9 @@ public class Result {
     }
 
     public void calculatePercentageScore(){
-        percentageScore = (int)(score/maxScore)*100;
+        if(maxScore != 0)
+            percentageScore = Math.round(score/maxScore*100);
+        else
+            percentageScore = 0;
     }
 }
