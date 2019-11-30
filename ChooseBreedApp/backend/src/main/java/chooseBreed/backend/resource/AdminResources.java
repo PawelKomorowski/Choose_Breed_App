@@ -1,10 +1,14 @@
 package chooseBreed.backend.resource;
 
 import chooseBreed.backend.db.repositories.*;
+import chooseBreed.backend.resource.util.Authenticate;
+import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -13,10 +17,14 @@ import java.net.URLDecoder;
 public class AdminResources {
     final BreedRepository breedRepository;
     final PhotoRepository photoRepository;
+    final Environment environment;
+    final BreedInfoRepository breedInfoRepository;
 
-    public AdminResources(BreedRepository breedRepository, PhotoRepository photoRepository) {
+    public AdminResources(BreedRepository breedRepository, PhotoRepository photoRepository, Environment environment, BreedInfoRepository breedInfoRepository) {
         this.breedRepository = breedRepository;
         this.photoRepository = photoRepository;
+        this.environment = environment;
+        this.breedInfoRepository = breedInfoRepository;
     }
 
     @GetMapping("/login")
@@ -27,10 +35,17 @@ public class AdminResources {
     }
 
     @PostMapping("/auth")
-    public String auth() {
-        // TODO: Handle user authentication
+    public String auth(Model model, @RequestParam("user") String user, @RequestParam("pass") String pass, HttpServletRequest request) {
+        boolean isAdmin = false;
+        if(user != null && pass != null && user.length() > 0 && pass.length() > 0)
+            isAdmin = Authenticate.authenticate(user, pass, environment.getProperty("admin.login"), environment.getProperty("admin.password"));
+        if(isAdmin){
+            request.setAttribute("isAdmin", true);
+        }
 
-        return "";
+        model.addAttribute("pageTitle", "Wszystkie rasy");
+        model.addAttribute("breedsInfos", breedInfoRepository.findAll());
+        return "all";
     }
 
     @GetMapping("/edit/{name}")
