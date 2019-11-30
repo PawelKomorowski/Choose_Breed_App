@@ -12,10 +12,10 @@ import lombok.Setter;
 public class FuzzyParam {
     private String setName;
     private String function;
-    private float a;
-    private float b;
-    private float c;
-    private float d;
+    private short a;
+    private short b;
+    private short c;
+    private short d;
 
     public FuzzyParam(Weight weight){
         this.setName = weight.getSetName();
