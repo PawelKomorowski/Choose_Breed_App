@@ -15,6 +15,7 @@ import java.net.URLDecoder;
 import java.util.Collection;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import static chooseBreed.backend.resource.util.CastParameters.*;
 
@@ -36,15 +37,16 @@ public class UserResources {
     }
 
     @GetMapping("/all")
-    public String allBreeds(Model model){
+    public String allBreeds(Model model, HttpSession session){
         model.addAttribute("pageTitle", "Wszystkie rasy");
         model.addAttribute("breedsInfos", breedInfoRepository.findAll());
+        model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
 
         return "all";
     }
 
     @GetMapping("/breed/{name}")
-    public String showBreed(@PathVariable String name, Model model){
+    public String showBreed(@PathVariable String name, Model model, HttpSession session){
         String nameDecoded;
         try {
             nameDecoded = URLDecoder.decode(name, "UTF-8");
@@ -54,13 +56,15 @@ public class UserResources {
 
         model.addAttribute("pageTitle", nameDecoded);
         model.addAttribute("breed", breedInfoRepository.findByName("Hawańczyk").get(0));
+        model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
 
         return "breed";
     }
 
     @GetMapping("/")
-    public String search(Model model){
+    public String search(Model model, HttpSession session){
         model.addAttribute("pageTitle", "Wyszukiwanie");
+        model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
 
         return "search";
     }
@@ -70,7 +74,7 @@ public class UserResources {
                          @RequestParam(required = false) List<String> illnesses, @RequestParam(required = false) List<String> live_length,
                          @RequestParam(required = false) List<String> cost, @RequestParam(required = false) List<String> livelihood_cost,
                          @RequestParam(required = false) List<String> cleaning_difficulty, @RequestParam(required = false) List<String> training_difficulty,
-                         @RequestParam(required = false) List<String> hair_length, @RequestParam(required = false) List<String> hair_type){
+                         @RequestParam(required = false) List<String> hair_length, @RequestParam(required = false) List<String> hair_type, HttpSession session){
 
         Collection<Size> sizeParam = stringToSize(size);
         Collection<IllnessPossibility> illnessParam = stringToIllnessPossibility(illnesses);
@@ -98,6 +102,7 @@ public class UserResources {
 
         model.addAttribute("results", results);
         model.addAttribute("pageTitle", "Wyniki wyszukiwania");
+        model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
 
         return "result";
     }

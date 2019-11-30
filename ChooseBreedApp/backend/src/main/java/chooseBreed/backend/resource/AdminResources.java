@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -28,24 +28,41 @@ public class AdminResources {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, @RequestParam(required = false) String status, HttpSession session) {
+        // Redirect to home if user already logged in
+        if (session.getAttribute("isAdmin") != null && (boolean)session.getAttribute("isAdmin") == true) {
+            return "redirect:/";
+        }
+
+        if (status != null) {
+            model.addAttribute("status", status);
+        }
+
         model.addAttribute("pageTitle", "Logowanie");
 
         return "login";
     }
 
     @PostMapping("/auth")
-    public String auth(Model model, @RequestParam("user") String user, @RequestParam("pass") String pass, HttpServletRequest request) {
+    public String auth(Model model, @RequestParam("user") String user, @RequestParam("pass") String pass, HttpSession session) {
         boolean isAdmin = false;
-        if(user != null && pass != null && user.length() > 0 && pass.length() > 0)
+        if(user != null && pass != null && user.length() > 0 && pass.length() > 0) {
             isAdmin = Authenticate.authenticate(user, pass, environment.getProperty("admin.login"), environment.getProperty("admin.password"));
-        if(isAdmin){
-            request.setAttribute("isAdmin", true);
+
+            if (isAdmin) {
+                session.setAttribute("isAdmin", true);
+                return "redirect:/";
+            }
         }
 
-        model.addAttribute("pageTitle", "Wszystkie rasy");
-        model.addAttribute("breedsInfos", breedInfoRepository.findAll());
-        return "all";
+        return "redirect:/login?status=err";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.setAttribute("isAdmin", null);
+
+        return "redirect:/";
     }
 
     @GetMapping("/edit/{name}")

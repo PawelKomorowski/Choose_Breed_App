@@ -6,6 +6,9 @@
         <h3 class="card__title">Logowanie</h3>
         <div class="card__content">
             <form action="/auth" method="POST" id="login">
+                <#if status?? && status=="err">
+                    <span class="text--red">Niepoprawne dane!</span><br>
+                </#if>
                 <div class="text-field">
                     <input type="text" class="text-field__input" id="user" name="user" required>
                     <label for="user" class="text-field__label">Użytkownik</label>

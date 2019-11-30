@@ -4,6 +4,10 @@
         Autor: Paweł Komorowski
     </div>
     <div class="footer__right">
+        <#if isAdmin?? && isAdmin==true>
+            Zalogowano jako administrator.<br>
+            <a class="typography--link text--white" href="/logout">wyloguj</a>
+        </#if>
     </div>
 </footer>
 
