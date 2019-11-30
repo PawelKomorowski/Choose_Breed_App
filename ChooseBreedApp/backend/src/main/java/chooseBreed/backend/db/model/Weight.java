@@ -25,14 +25,14 @@ public class Weight {
     private String function;
 
     @Column(name = "a")
-    private float a;
+    private short a;
 
     @Column(name = "b")
-    private float b;
+    private short b;
 
     @Column(name = "c")
-    private float c;
+    private short c;
 
     @Column(name = "d")
-    private float d;
+    private short d;
 }
