@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -39,7 +40,10 @@ public class UserResources {
     @GetMapping("/all")
     public String allBreeds(Model model, HttpSession session){
         model.addAttribute("pageTitle", "Wszystkie rasy");
-        model.addAttribute("breedsInfos", breedInfoRepository.findAll());
+
+        List<BreedsInfo> breedsInfos =  breedInfoRepository.findAll();
+        breedsInfos.sort(Comparator.comparing(BreedsInfo::getName));
+        model.addAttribute("breedsInfos", breedsInfos);
         model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
 
         return "all";
