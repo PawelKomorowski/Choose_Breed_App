@@ -30,7 +30,7 @@ public class AdminResources {
     @GetMapping("/login")
     public String login(Model model, @RequestParam(required = false) String status, HttpSession session) {
         // Redirect to home if user already logged in
-        if (session.getAttribute("isAdmin") != null && (boolean)session.getAttribute("isAdmin") == true) {
+        if (session.getAttribute("isAdmin") != null && (boolean) session.getAttribute("isAdmin")) {
             return "redirect:/";
         }
 
@@ -51,7 +51,7 @@ public class AdminResources {
 
             if (isAdmin) {
                 session.setAttribute("isAdmin", true);
-                return "redirect:/";
+                return "redirect:/all";
             }
         }
 
