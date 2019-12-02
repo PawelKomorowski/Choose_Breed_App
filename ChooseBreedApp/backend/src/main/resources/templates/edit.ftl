@@ -13,6 +13,16 @@
                         <#if breed??>value="${breed.name}" disabled</#if>>
                     <label for="name" class="text-field__label">Nazwa</label>
                 </div><br>
+                <!-- Grupa -->
+                <div class="select">
+                    <select type="select" class="select__select" id="group" name="group" required>
+                        <option value="">Wybierz...</option>
+                        <#list groups as group>
+                            <option value="${group.getId()}" <#if breed?? && group.getId()=breed.getBreedGroup().getId()>selected</#if>>${group.getName()}</option>
+                        </#list>
+                    </select>
+                    <label for="group" class="select__label">Grupa</label>
+                </div><br>
                 <!-- Rozmiar -->
                 <div class="select">
                     <select type="select" class="select__select" id="size" name="size" required>

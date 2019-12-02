@@ -19,12 +19,14 @@ public class AdminResources {
     final PhotoRepository photoRepository;
     final Environment environment;
     final BreedInfoRepository breedInfoRepository;
+    final BreedGroupRepository breedGroupRepository;
 
-    public AdminResources(BreedRepository breedRepository, PhotoRepository photoRepository, Environment environment, BreedInfoRepository breedInfoRepository) {
+    public AdminResources(BreedRepository breedRepository, PhotoRepository photoRepository, Environment environment, BreedInfoRepository breedInfoRepository, BreedGroupRepository breedGroupRepository) {
         this.breedRepository = breedRepository;
         this.photoRepository = photoRepository;
         this.environment = environment;
         this.breedInfoRepository = breedInfoRepository;
+        this.breedGroupRepository = breedGroupRepository;
     }
 
     @GetMapping("/login")
@@ -77,6 +79,7 @@ public class AdminResources {
         model.addAttribute("pageTitle", "Edycja: " + url);
         model.addAttribute("pageAction", "Edycja");
         model.addAttribute("breed", breedRepository.findByName(url).get(0));
+        model.addAttribute("groups", breedGroupRepository.findAll());
 
         return "edit";
     }
@@ -85,6 +88,7 @@ public class AdminResources {
     public String addBreed(Model model) {
         model.addAttribute("pageTitle", "Dodawanie");
         model.addAttribute("pageAction", "Dodawanie");
+        model.addAttribute("groups", breedGroupRepository.findAll());
 
         return "edit";
     }
