@@ -48,7 +48,6 @@ class FuzzyLogicTests {
 		assertEquals(Math.round(indicatorFunctions.checkWeight(breed, weights)*1000), 714);
 		assertEquals(Math.round(indicatorFunctions.checkLivelihoodCost(breed, livelihoodCosts)*1000), 667);
 		assertEquals(Math.round(indicatorFunctions.checkLiveLength(breed, liveLengths)), 0);
-
 	}
 
 	BreedsInfo createBreed(){

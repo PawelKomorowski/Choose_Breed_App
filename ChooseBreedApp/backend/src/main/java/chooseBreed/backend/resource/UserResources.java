@@ -59,7 +59,7 @@ public class UserResources {
         }
 
         model.addAttribute("pageTitle", nameDecoded);
-        model.addAttribute("breed", breedInfoRepository.findByName("Hawańczyk").get(0));
+        model.addAttribute("breed", breedInfoRepository.findByName(name).get(0));
         model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
 
         return "breed";

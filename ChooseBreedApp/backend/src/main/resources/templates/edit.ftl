@@ -10,12 +10,12 @@
                 <!-- Nazwa -->
                 <div class="text-field">
                     <input type="text" class="text-field__input" id="name" name="name" required
-                        <#if breed??>value="${breed.name}" disabled</#if>>
+                        <#if breed??>value="${breed.name}" readonly</#if>>
                     <label for="name" class="text-field__label">Nazwa</label>
                 </div><br>
                 <!-- Grupa -->
                 <div class="select">
-                    <select type="select" class="select__select" id="group" name="group" required>
+                    <select type="select" class="select__select" id="group" name="breedGroup" required>
                         <option value="">Wybierz...</option>
                         <#list groups as group>
                             <option value="${group.getId()}" <#if breed?? && group.getId()=breed.getBreedGroup().getId()>selected</#if>>${group.getName()}</option>
@@ -27,9 +27,9 @@
                 <div class="select">
                     <select type="select" class="select__select" id="size" name="size" required>
                         <option value="">Wybierz...</option>
-                        <option value="maly" <#if breed?? && breed.size="MALY">selected</#if>>Mały</option>
-                        <option value="sredni" <#if breed?? && breed.size="SREDNI">selected</#if>>Średni</option>
-                        <option value="duzy" <#if breed?? && breed.size="DUZY">selected</#if>>Duży</option>
+                        <option value="MALY" <#if breed?? && breed.size="MALY">selected</#if>>Mały</option>
+                        <option value="SREDNI" <#if breed?? && breed.size="SREDNI">selected</#if>>Średni</option>
+                        <option value="DUZY" <#if breed?? && breed.size="DUZY">selected</#if>>Duży</option>
                     </select>
                     <label for="size" class="select__label">Rozmiar</label>
                 </div><br>
@@ -40,17 +40,17 @@
                 </div><br>
                 <!-- Choroby -->
                 <div class="select">
-                    <select type="select" class="select__select" id="illnesses" name="illnesses" required>
+                    <select type="select" class="select__select" id="illnesses" name="illnessPossibility" required>
                         <option value="">Wybierz...</option>
-                        <option value="mala" <#if breed?? && breed.illnessPossibility="MALA">selected</#if>>Mała</option>
-                        <option value="srednia" <#if breed?? && breed.illnessPossibility="SREDNIA">selected</#if>>Średnia</option>
-                        <option value="duza" <#if breed?? && breed.illnessPossibility="DUZA">selected</#if>>Duża</option>
+                        <option value="MALA" <#if breed?? && breed.illnessPossibility="MALA">selected</#if>>Mała</option>
+                        <option value="SREDNIA" <#if breed?? && breed.illnessPossibility="SREDNIA">selected</#if>>Średnia</option>
+                        <option value="DUZA" <#if breed?? && breed.illnessPossibility="DUZA">selected</#if>>Duża</option>
                     </select>
                     <label for="illnesses" class="select__label">Skłonność do chorób</label>
                 </div><br>
                 <!-- Długość życia -->
                 <div class="text-field">
-                    <input type="number" class="text-field__input" id="live_length" name="live_length" required value="<#if breed??>${breed.liveLength?c}</#if>">
+                    <input type="number" class="text-field__input" id="live_length" name="liveLength" required value="<#if breed??>${breed.liveLength?c}</#if>">
                     <label for="live_length" class="text-field__label">Długość życia</label>
                 </div><br>
                 <!-- Koszt zakupu -->
@@ -60,47 +60,46 @@
                 </div><br>
                 <!-- Koszt utrzymania -->
                 <div class="text-field">
-                    <input type="number" class="text-field__input" id="livelihood_cost" name="livelihood_cost" required value="<#if breed??>${breed.livelihoodCost?c}</#if>">
+                    <input type="number" class="text-field__input" id="livelihood_cost" name="livelihoodCost" required value="<#if breed??>${breed.livelihoodCost?c}</#if>">
                     <label for="livelihood_cost" class="text-field__label">Koszt utrzymania</label>
                 </div><br>
                 <!-- Trudność czyszczenia -->
                 <div class="select">
-                    <select type="select" class="select__select" id="cleaning_difficulty" name="cleaning_difficulty" required>
+                    <select type="select" class="select__select" id="cleaning_difficulty" name="cleaningDifficulty" required>
                         <option value="">Wybierz...</option>
-                        <option value="latwo" <#if breed?? && breed.cleaningDifficulty="LATWO">selected</#if>>Łatwo</option>
-                        <option value="srednio" <#if breed?? && breed.cleaningDifficulty="SREDNIO">selected</#if>>Średnio</option>
-                        <option value="trudno" <#if breed?? && breed.cleaningDifficulty="TRUDNO">selected</#if>>Trudno</option>
+                        <option value="LATWO" <#if breed?? && breed.cleaningDifficulty="LATWO">selected</#if>>Łatwo</option>
+                        <option value="SREDNIO" <#if breed?? && breed.cleaningDifficulty="SREDNIO">selected</#if>>Średnio</option>
+                        <option value="TRUDNO" <#if breed?? && breed.cleaningDifficulty="TRUDNO">selected</#if>>Trudno</option>
                     </select>
                     <label for="cleaning_difficulty" class="select__label">Trudność czyszczenia</label>
                 </div><br>
                 <!-- Trudność tresury -->
                 <div class="select">
-                    <select type="select" class="select__select" id="training_difficulty" name="training_difficulty" required>
+                    <select type="select" class="select__select" id="training_difficulty" name="trainDifficulty" required>
                         <option value="">Wybierz...</option>
-                        <option value="latwo" <#if breed?? && breed.trainDifficulty="LATWO">selected</#if>>Łatwo</option>
-                        <option value="srednio" <#if breed?? && breed.trainDifficulty="SREDNIO">selected</#if>>Średnio</option>
-                        <option value="trudno" <#if breed?? && breed.trainDifficulty="TRUDNO">selected</#if>>Trudno</option>
+                        <option value="LATWO" <#if breed?? && breed.trainDifficulty="LATWO">selected</#if>>Łatwo</option>
+                        <option value="SREDNIO" <#if breed?? && breed.trainDifficulty="SREDNIO">selected</#if>>Średnio</option>
+                        <option value="TRUDNO" <#if breed?? && breed.trainDifficulty="TRUDNO">selected</#if>>Trudno</option>
                     </select>
                     <label for="training_difficulty" class="select__label">Trudność tresury</label>
                 </div><br>
                 <!-- Długość sierści -->
                 <div class="select">
-                    <select type="select" class="select__select" id="hair_length" name="hair_length" required>
+                    <select type="select" class="select__select" id="hair_length" name="hairLength" required>
                         <option value="">Wybierz...</option>
-                        <option value="krotka" <#if breed?? && breed.hairLength="KROTKA">selected</#if>>Krótka</option>
-                        <option value="srednia" <#if breed?? && breed.hairLength="SREDNIA">selected</#if>>Średnia</option>
-                        <option value="dluga" <#if breed?? && breed.hairLength="DLUGA">selected</#if>>Długa</option>
+                        <option value="KROTKA" <#if breed?? && breed.hairLength="KROTKA">selected</#if>>Krótka</option>
+                        <option value="SREDNIA" <#if breed?? && breed.hairLength="SREDNIA">selected</#if>>Średnia</option>
+                        <option value="DLUGA" <#if breed?? && breed.hairLength="DLUGA">selected</#if>>Długa</option>
                     </select>
                     <label for="hair_length" class="select__label">Długość sierści</label>
                 </div><br>
                 <!-- Typ sierści -->
                 <div class="select">
-                    <select type="select" class="select__select" id="hair_type" name="hair_type" required>
+                    <select type="select" class="select__select" id="hair_type" name="hairType" required>
                         <option value="">Wybierz...</option>
-                        <option value="gladka" <#if breed?? && breed.hairType="GLADKA">selected</#if>>Gładka</option>
-                        <option value="falista" <#if breed?? && breed.hairType="FALISTA">selected</#if>>Falista</option>
-                        <option value="puchata" <#if breed?? && breed.hairType="PUCHATA">selected</#if>>Puchata</option>
-                        <option value="szorstka" <#if breed?? && breed.hairType="SZORSTKA">selected</#if>>Szorstka</option>
+                        <option value="GLADKA" <#if breed?? && breed.hairType="GLADKA">selected</#if>>Gładka</option>
+                        <option value="PUCHATA" <#if breed?? && breed.hairType="PUCHATA">selected</#if>>Puchata</option>
+                        <option value="SZORSTKA" <#if breed?? && breed.hairType="SZORSTKA">selected</#if>>Szorstka</option>
                     </select>
                     <label for="hair_type" class="select__label">Typ sierści</label>
                 </div><br>
