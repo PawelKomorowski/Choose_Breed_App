@@ -74,7 +74,15 @@
     <article class="card color--white text--black">
         <h3 class="card__title">Galeria</h3>
         <div class="card__content">
-            <p>Lorem ipsum dolor...</p>
+            <ul class="gallery">
+                <#list photos as photo>
+                    <li class="gallery__item">
+                        <div class="gallery__container">
+                            <img src="${photo.file}" alt="Zdjęcie psa rasy ${breed.name}." class="gallery__image">
+                        </div>
+                    </li>
+                </#list>
+            </ul>
         </div>
     </article>
 
