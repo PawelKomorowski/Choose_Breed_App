@@ -1,5 +1,6 @@
 package chooseBreed.backend.resource;
 
+import chooseBreed.backend.db.model.Breed;
 import chooseBreed.backend.db.repositories.*;
 import chooseBreed.backend.resource.util.Authenticate;
 import org.mindrot.jbcrypt.BCrypt;
@@ -94,10 +95,11 @@ public class AdminResources {
     }
 
     @PostMapping("/save")
-    public String saveBreed(Model model) {
-        // TODO: Handle incoming values
-
-        return "";
+    public String saveBreed(Model model, @ModelAttribute Breed breed, HttpSession session) {
+        if(session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+            breedRepository.save(breed);
+        }
+        return "redirect:/all";
     }
 
 }
