@@ -63,35 +63,44 @@ public class AdminResources {
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.setAttribute("isAdmin", null);
+        if(session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+            session.setAttribute("isAdmin", null);
 
-        return "redirect:/";
+            return "redirect:/";
+        }
+        return "redirect:/all";
     }
 
     @GetMapping("/edit/{name}")
-    public String editBreed(@PathVariable String name, Model model) {
-        String url;
-        try {
-            url = URLDecoder.decode(name, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            url = name;
+    public String editBreed(@PathVariable String name, Model model, HttpSession session) {
+        if(session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+            String url;
+            try {
+                url = URLDecoder.decode(name, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                url = name;
+            }
+
+            model.addAttribute("pageTitle", "Edycja: " + url);
+            model.addAttribute("pageAction", "Edycja");
+            model.addAttribute("breed", breedRepository.findByName(url).get(0));
+            model.addAttribute("groups", breedGroupRepository.findAll());
+
+            return "edit";
         }
-
-        model.addAttribute("pageTitle", "Edycja: " + url);
-        model.addAttribute("pageAction", "Edycja");
-        model.addAttribute("breed", breedRepository.findByName(url).get(0));
-        model.addAttribute("groups", breedGroupRepository.findAll());
-
-        return "edit";
+        return "redirect:/all";
     }
 
     @GetMapping("/add")
-    public String addBreed(Model model) {
-        model.addAttribute("pageTitle", "Dodawanie");
-        model.addAttribute("pageAction", "Dodawanie");
-        model.addAttribute("groups", breedGroupRepository.findAll());
+    public String addBreed(Model model, HttpSession session) {
+        if(session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+            model.addAttribute("pageTitle", "Dodawanie");
+            model.addAttribute("pageAction", "Dodawanie");
+            model.addAttribute("groups", breedGroupRepository.findAll());
 
-        return "edit";
+            return "edit";
+        }
+        return "redirect:/all";
     }
 
     @PostMapping("/save")
