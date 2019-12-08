@@ -8,6 +8,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,4 +71,13 @@ public class Breed {
     @OneToMany(mappedBy = "breed")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Photo> photos = new ArrayList<>();
+
+    public String urlEncode(){
+        try {
+            return URLEncoder.encode(name, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("Error occurred during encoding breed: " + name);
+            return "error";
+        }
+    }
 }
