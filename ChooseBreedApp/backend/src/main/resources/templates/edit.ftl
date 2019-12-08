@@ -115,31 +115,33 @@
         </div>
     </article>
 
-    <article class="card color--white text--black">
-        <h3 class="card__title">Galeria</h3>
-        <div class="card__content">
-            <h4 class="heading--6">Zdjęcia</h4>
+    <#if breed??>
+        <article class="card color--white text--black">
+            <h3 class="card__title">Galeria</h3>
+            <div class="card__content">
+                <h4 class="heading--6">Zdjęcia</h4>
 
-            <ul class="gallery">
-                <#list photos as photo>
-                    <li class="gallery__item">
-                        <div class="gallery__container">
-                            <img src="${path}${photo.file}" alt="Zdjęcie psa" class="gallery__image">
-                        </div>
-                        <div class="gallery__caption">
-                            <a href="/delphoto/${photo.id}" class="typography--link text--teal">usuń</a>
-                        </div>
-                    </li>
-                </#list>
-            </ul>
+                <ul class="gallery">
+                    <#list photos as photo>
+                        <li class="gallery__item">
+                            <div class="gallery__container">
+                                <img src="${path}${photo.file}" alt="Zdjęcie psa" class="gallery__image">
+                            </div>
+                            <div class="gallery__caption">
+                                <a href="/delphoto/${photo.id}" class="typography--link text--teal">usuń</a>
+                            </div>
+                        </li>
+                    </#list>
+                </ul>
 
-            <h4 class="heading--6">Dodawanie</h4>
-            <form action="/savephoto/${breed.urlEncode()}" method="POST" enctype="multipart/form-data">
-                <input type="file" name="image" id="image" value="Nie wybrano pliku"><br>
-                <input type="submit" value="Dodaj" class="button text--teal">
-            </form>
-        </div>
-    </article>
+                <h4 class="heading--6">Dodawanie</h4>
+                <form action="/savephoto/${breed.urlEncode()}" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="image" id="image" value="Nie wybrano pliku"><br>
+                    <input type="submit" value="Dodaj" class="button text--teal">
+                </form>
+            </div>
+        </article>
+    </#if>
 
 </main>
 
