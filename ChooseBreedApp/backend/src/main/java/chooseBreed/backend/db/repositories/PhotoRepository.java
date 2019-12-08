@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface PhotoRepository extends JpaRepository<Photo, Integer> {
     List<Photo> findByBreed(Breed breed);
+    List<Photo> findById(int id);
 }
