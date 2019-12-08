@@ -78,7 +78,7 @@
                 <#list photos as photo>
                     <li class="gallery__item">
                         <div class="gallery__container">
-                            <img src="${photo.file}" alt="Zdjęcie psa rasy ${breed.name}." class="gallery__image">
+                            <img src="${path}${photo.file}" alt="Zdjęcie psa rasy ${breed.name}." class="gallery__image">
                         </div>
                     </li>
                 </#list>
