@@ -31,6 +31,8 @@
                             <#if isAdmin?? && isAdmin==true>
                                 <td class="table__cell table__cell--head table__cell--non-numeric">
                                     <a href="/edit/${breed.urlEncode()}" class="button button--flat text--teal color--white">edytuj</a>
+                                    <a href="/add" class="button button--flat text--teal color--white">dodaj</a>
+                                    <a href="/delete/${breed.urlEncode()}" class="button button--flat text--teal color--white">usuń</a>
                                 </td>
                             </#if>
                         </tr>
