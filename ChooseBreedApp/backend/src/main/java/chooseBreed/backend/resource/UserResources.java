@@ -23,13 +23,18 @@ import static chooseBreed.backend.resource.util.CastParameters.*;
 
 @Controller
 public class UserResources {
+    private static String showImageDirectory = "/images/";
+    final BreedRepository breedRepository;
+    final PhotoRepository photoRepository;
     final BreedInfoRepository breedInfoRepository;
     final CostRepository costRepository;
     final LiveLengthRepository liveLengthRepository;
     final LivelihoodCostRepository livelihoodCostRepository;
     final WeightRepository weightRepository;
 
-    public UserResources(BreedInfoRepository breedInfoRepository, CostRepository costRepository, LiveLengthRepository liveLengthRepository, LivelihoodCostRepository livelihoodCostRepository, WeightRepository weightRepository) {
+    public UserResources(BreedRepository breedRepository, PhotoRepository photoRepository, BreedInfoRepository breedInfoRepository, CostRepository costRepository, LiveLengthRepository liveLengthRepository, LivelihoodCostRepository livelihoodCostRepository, WeightRepository weightRepository) {
+        this.breedRepository = breedRepository;
+        this.photoRepository = photoRepository;
         this.breedInfoRepository = breedInfoRepository;
         this.costRepository = costRepository;
         this.liveLengthRepository = liveLengthRepository;
@@ -51,16 +56,17 @@ public class UserResources {
 
     @GetMapping("/breed/{name}")
     public String showBreed(@PathVariable String name, Model model, HttpSession session){
-        String nameDecoded;
+        String url;
         try {
-            nameDecoded = URLDecoder.decode(name, "UTF-8");
+            url = URLDecoder.decode(name, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            nameDecoded = name;
+            url = name;
         }
-
-        model.addAttribute("pageTitle", nameDecoded);
-        model.addAttribute("breed", breedInfoRepository.findByName(name).get(0));
+        model.addAttribute("pageTitle", url);
+        model.addAttribute("breed", breedInfoRepository.findByName(url).get(0));
+        model.addAttribute("photos", photoRepository.findByBreed(breedRepository.findByName(url).get(0)));
         model.addAttribute("isAdmin", session.getAttribute("isAdmin"));
+        model.addAttribute("path", showImageDirectory);
 
         return "breed";
     }
